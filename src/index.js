@@ -1,10 +1,16 @@
 import _ from 'lodash';
 import fs from 'fs';
+import path from 'path';
 
 
 const compareObjects = (pathOne, pathTwo) => {
-  const obj1 = JSON.parse(fs.readFileSync(pathOne));
-  const obj2 = JSON.parse(fs.readFileSync(pathTwo));
+  const curDir = process.cwd();
+  let one = path.resolve(curDir, pathOne);
+  let two = path.resolve(curDir, pathTwo);
+  // pathOne.includes(curDir)? one = pathOne: one;
+  // pathTwo.includes(curDir)? two = pathTwo: two;
+  const obj1 = JSON.parse(fs.readFileSync(one));
+  const obj2 = JSON.parse(fs.readFileSync(two));
   const entries1 = Object.entries(obj1);
   const entries2 = Object.entries(obj2);
     const acc = [];
