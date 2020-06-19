@@ -12,4 +12,4 @@ program
   });
 
 program.parse(process.argv);
-//console.log('type \'gendiff -h\' for more info');
+//  console.log('type \'gendiff -h\' for more info');
