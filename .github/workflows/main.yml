@@ -35,3 +35,13 @@ jobs:
     - name: Run eslint
       run: |
         make lint
+    - name: Test & publish code coverage
+    # Publish code coverage on Code Climate
+    # https://github.com/paambaati/codeclimate-action
+      uses: paambaati/codeclimate-action@v2.6.0
+    # Add Code Climate secret key
+      env:
+         CC_TEST_REPORTER_ID: 190912b56c293fbe35fbc4907402621ef4bdae13ce8b0b057231f0a1601acb11
+        with:
+          coverageCommand: make test-coverage
+          debug: true
