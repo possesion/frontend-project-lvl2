@@ -1,14 +1,14 @@
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
+import parsers from './parsers.js';
 
 
 const compareObjects = (pathOne, pathTwo) => {
-  const curDir = process.cwd();
-  const one = path.resolve(curDir, pathOne);
-  const two = path.resolve(curDir, pathTwo);
-  const obj1 = JSON.parse(fs.readFileSync(one));
-  const obj2 = JSON.parse(fs.readFileSync(two));
+  const obj1 = parsers(pathOne);
+  const obj2 = parsers(pathTwo);
+  // console.log(obj1);
+  // console.log(obj2);
   const entries1 = Object.entries(obj1);
   const entries2 = Object.entries(obj2);
   const acc = [];

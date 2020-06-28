@@ -11,3 +11,7 @@ test('string test', () => {
 test('wrong test', () => {
   expect(compareObjects('__tests__/fixtures/before.json', '__tests__/fixtures/after.json')).not.toMatch(example2);
 });
+
+test('compare yaml', () => {
+  expect(compareObjects('__tests__/fixtures/before.yaml', '__tests__/fixtures/after.yaml')).toMatch(example);
+});
