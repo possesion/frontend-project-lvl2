@@ -1,19 +1,25 @@
 import yaml from 'js-yaml';
 import path from 'path';
 import fs from 'fs';
+import ini from 'ini';
+
 
 const parsers = (url) => {
-  let res;
-  const type = path.extname(url);
   const curDir = process.cwd();
+  const format = path.extname(url);
   const link = path.resolve(curDir, url);
-  if (type === '.yaml') {
-    res = yaml.safeLoad(fs.readFileSync(link, 'utf8'));
+  const data = fs.readFileSync(link, 'utf8');
+  let parse;
+  if (format === '.yaml') {
+    parse = yaml.safeLoad;
   }
-  if (type === '.json') {
-    res = JSON.parse(fs.readFileSync(link, 'utf8'));
+  if (format === '.json') {
+    parse = JSON.parse;
   }
-  return res;
+  if (format === '.ini') {
+    parse = ini.parse;
+  }
+  return parse(data);
 };
 
 export default parsers;

@@ -10,12 +10,15 @@ $ make install
 ## Run tests
 $ make test
 ## How to use
-$ gendiff -h
-## Example
-$ gendiff <path/to/first.json> <path/to/second.json>
+$ gendiff <path_1> <path_2> 
+(use flag '-h' for more info)
+
+## Examples
+#### $ gendiff path/to/first.json path/to/second.json
 <a href="https://asciinema.org/a/THnQQt5wc0dr1T8bjQZv2jafZ" target="_blank"><img src="https://asciinema.org/a/THnQQt5wc0dr1T8bjQZv2jafZ.svg" /></a>
 
-### You can also use files with yaml extension: 
-
-$ gendiff <path/to/first.yaml> <path/to/second.yaml>
+#### $ gendiff path/to/first.yaml path/to/second.yaml
 <a href="https://asciinema.org/a/wTPxgnzGIa4qbv0HGlSlW6UOk" target="_blank"><img src="https://asciinema.org/a/wTPxgnzGIa4qbv0HGlSlW6UOk.svg" /></a>
+
+#### $ gendiff path/to/first.ini path/to/second.ini
+<a href="https://asciinema.org/a/sEXEFGcsDnKmrtoN6LHQR4bAA" target="_blank"><img src="https://asciinema.org/a/sEXEFGcsDnKmrtoN6LHQR4bAA.svg" /></a>
