@@ -1,25 +1,38 @@
-import yaml from 'js-yaml';
-import path from 'path';
-import fs from 'fs';
-import ini from 'ini';
+import yaml from "js-yaml";
+import ini from "ini";
+import _ from "lodash";
 
+const isNumber = (value) => typeof value === "number";
 
-const parsers = (url) => {
-  const curDir = process.cwd();
-  const format = path.extname(url);
-  const link = path.resolve(curDir, url);
-  const data = fs.readFileSync(link, 'utf8');
-  let parse;
-  if (format === '.yaml') {
-    parse = yaml.safeLoad;
-  }
-  if (format === '.json') {
-    parse = JSON.parse;
-  }
-  if (format === '.ini') {
-    parse = ini.parse;
-  }
-  return parse(data);
+const makeNumberFromStr = (data) => {
+  const keys = Object.keys(data);
+
+  return keys.reduce((acc, key) => {
+    const currentValue = data[key];
+    const newValue = isNumber(currentValue)
+      ? parseFloat(currentValue)
+      : currentValue;
+    if (_.isPlainObject(newValue)) {
+      return { ...acc, [key]: makeNumberFromStr(newValue) };
+    }
+    return { ...acc, [key]: newValue };
+  }, {});
 };
 
-export default parsers;
+const parse = (data, ext) => {
+  switch (ext) {
+    case "yaml": {
+      return yaml.safeLoad(data);
+    }
+    case "json": {
+      return JSON.parse(data);
+    }
+    case "ini": {
+      return makeNumberFromStr(ini.parse(data));
+    }
+    default:
+      throw new Error(`Unknown file extension: ${extname}`);
+  }
+};
+
+export default parse;
