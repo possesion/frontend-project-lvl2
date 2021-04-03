@@ -18,12 +18,12 @@ beforeAll(() => {
 
 const extensions = ['ini', 'json', 'yaml'];
 const payload = extensions.map((ext) => {
-  const x = getFixturePath('file1');
-  const y = getFixturePath('file2');
-  return [`${x}.${ext}`, `${y}.${ext}`];
+  const file1path = getFixturePath('file1');
+  const file2path = getFixturePath('file2');
+  return [`${file1path}.${ext}`, `${file2path}.${ext}`];
 });
 
-test.each(payload)('compare files', (file1, file2) => {
+test.each(payload)('right functionality check', (file1, file2) => {
   expect(genDiff(file1, file2, 'json')).toEqual(jsonResult);
   expect(genDiff(file1, file2, 'plain')).toEqual(plainResult);
   expect(genDiff(file1, file2)).toEqual(stylishResult);

@@ -10,25 +10,25 @@ const getSubstr = (value) => {
   return value;
 };
 
-const getDataInPlainType = (tree, parent = '') => tree.flatMap((node) => {
+const getPlainFormat = (tree, parent = '') => tree.flatMap((node) => {
   const {
     key, type, value, value1, value2, children,
   } = node;
-  const propName = `${parent}${key}`;
-  const newParent = `${propName}.`;
+  const prop = `${parent}${key}`;
+  const newParent = `${prop}.`;
   switch (type) {
     case 'parent':
-      return getDataInPlainType(children, newParent);
+      return getPlainFormat(children, newParent);
     case 'modified':
-      return `Property '${propName}' was updated. From ${getSubstr(
+      return `Property '${prop}' was updated. From ${getSubstr(
         value1,
       )} to ${getSubstr(value2)}`;
     case 'added':
-      return `Property '${propName}' was added with value: ${getSubstr(
+      return `Property '${prop}' was added with value: ${getSubstr(
         value,
       )}`;
     case 'deleted':
-      return `Property '${propName}' was removed`;
+      return `Property '${prop}' was removed`;
     case 'unchanged':
       return [];
     default:
@@ -36,4 +36,4 @@ const getDataInPlainType = (tree, parent = '') => tree.flatMap((node) => {
   }
 });
 
-export default (tree) => getDataInPlainType(tree).join('\n');
+export default (tree) => getPlainFormat(tree).join('\n');
