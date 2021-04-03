@@ -1,20 +1,23 @@
-const stringify = (value, replacer = " ", spacesCount = 2) => {
-  const iter = (currentValue, depth) => {
-    if (typeof currentValue !== "object") {
-      return currentValue.toString();
-    }
+export default (data) => JSON.stringify(data, null, 2);
 
-    const deepIndentSize = depth + spacesCount;
-    const deepIndent = replacer.repeat(deepIndentSize);
-    const currentIndent = replacer.repeat(depth);
-    const lines = Object.entries(currentValue).map(
-      ([key, val]) => `${deepIndent}${key}: ${iter(val, deepIndentSize)}`
-    );
+// Собственный Stringify  в процессе написания
+// const stringify = (value, replacer = ' ', spacesCount = 2) => {
+//   const iter = (currentValue, depth) => {
+//     if (typeof currentValue !== 'object') {
+//       return `"${currentValue.toString()}",`;
+//     }
 
-    return ["{", ...lines, `${currentIndent}}`].join("\n");
-  };
+//     const deepIndentSize = depth + spacesCount;
+//     const deepIndent = replacer.repeat(deepIndentSize);
+//     const currentIndent = replacer.repeat(depth);
+//     const lines = Object.entries(currentValue).map(
+//       ([key, val]) => `${deepIndent}"${key}": ${iter(val, deepIndentSize)}`,
+//     );
 
-  return iter(value, 0);
-};
+//     return ['{', ...lines, `${currentIndent}}`].join('\n');
+//   };
 
-export default stringify;
+//   return iter(value, 0);
+// };
+
+// export default stringify;

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const buildAST = (obj1, obj2) => {
   const firstObjKeys = Object.keys(obj1);
@@ -9,20 +9,20 @@ const buildAST = (obj1, obj2) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
     if (!_.hasIn(obj1, key)) {
-      return { key, type: "added", value: value2 };
+      return { key, type: 'added', value: value2 };
     }
     if (!_.hasIn(obj2, key)) {
-      return { key, type: "deleted", value: value1 };
+      return { key, type: 'deleted', value: value1 };
     }
     if (value1 === value2) {
-      return { key, type: "unchanged", value: value1 };
+      return { key, type: 'unchanged', value: value1 };
     }
     if (_.isPlainObject(value2) && _.isPlainObject(value1)) {
-      return { key, type: "parent", children: buildAST(value1, value2) };
+      return { key, type: 'parent', children: buildAST(value1, value2) };
     }
     return {
       key,
-      type: "modified",
+      type: 'modified',
       value1,
       value2,
     };

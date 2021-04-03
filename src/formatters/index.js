@@ -1,14 +1,14 @@
-import getDiffPlainType from "./plain.js";
-import stringify from "./stringify.js";
-import getDiffStylishType from "./stylish.js";
+import getDiffPlainType from './plain.js';
+import stringify from './stringify.js';
+import getDiffStylishType from './stylish.js';
 
 export default (data, formatter) => {
   switch (formatter) {
-    case "json":
+    case 'json':
       return stringify(data);
-    case "plain":
+    case 'plain':
       return getDiffPlainType(data);
-    case "stylish":
+    case 'stylish':
       return getDiffStylishType(data);
     default:
       throw new Error(`Unknown formatter: ${formatter}`);

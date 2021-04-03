@@ -1,8 +1,8 @@
-import yaml from "js-yaml";
-import ini from "ini";
-import _ from "lodash";
+import yaml from 'js-yaml';
+import ini from 'ini';
+import _ from 'lodash';
 
-const isNumber = (value) => typeof value === "number";
+const isNumber = (value) => _.isString(value) && value.match(/^[0-9]/);
 
 const makeNumberFromStr = (data) => {
   const keys = Object.keys(data);
@@ -21,17 +21,17 @@ const makeNumberFromStr = (data) => {
 
 const parse = (data, ext) => {
   switch (ext) {
-    case "yaml": {
+    case 'yaml': {
       return yaml.safeLoad(data);
     }
-    case "json": {
+    case 'json': {
       return JSON.parse(data);
     }
-    case "ini": {
+    case 'ini': {
       return makeNumberFromStr(ini.parse(data));
     }
     default:
-      throw new Error(`Unknown file extension: ${extname}`);
+      throw new Error(`Unknown file extension: ${ext}`);
   }
 };
 
