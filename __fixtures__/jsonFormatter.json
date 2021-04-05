@@ -22,9 +22,7 @@
         "key": "setting3",
         "type": "modified",
         "value1": true,
-        "value2": {
-          "key": "value"
-        }
+        "value2": null
       },
       {
         "key": "setting4",
@@ -42,6 +40,18 @@
         "key": "setting6",
         "type": "parent",
         "children": [
+          {
+            "key": "doge",
+            "type": "parent",
+            "children": [
+              {
+                "key": "wow",
+                "type": "modified",
+                "value1": "",
+                "value2": "so much"
+              }
+            ]
+          },
           {
             "key": "key",
             "type": "unchanged",
@@ -85,14 +95,22 @@
     "key": "group2",
     "type": "deleted",
     "value": {
-      "abc": 12345
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
     }
   },
   {
     "key": "group3",
     "type": "added",
     "value": {
-      "fee": 100500
+      "fee": 100500,
+      "deep": {
+        "id": {
+          "number": 45
+        }
+      }
     }
   }
 ]
