@@ -6,8 +6,7 @@ Compare two configuration files. Pass two files, choose format and that's it. <b
 
 <a href="https://codeclimate.com/github/possesion/frontend-project-lvl2/maintainability"><img src="https://api.codeclimate.com/v1/badges/01d535a023416c5787f0/maintainability" /></a>
 
-
-![](https://github.com/possesion/frontend-project-lvl2/workflows/CI/badge.svg)
+![](https://github.com/possesion/frontend-project-lvl2/workflows/main.yml/badge.svg)
 
 ## Setup
 $ make install
