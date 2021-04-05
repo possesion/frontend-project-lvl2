@@ -6,15 +6,11 @@ import genDiff from '../src/index.js';
 const __filepath = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filepath);
 const getFixturePath = (filePath) => path.join(__dirname, '..', '__fixtures__', filePath);
-let jsonResult;
-let plainResult;
-let stylishResult;
-beforeAll(() => {
-  // тут читаем файлы c правильными результатами
-  jsonResult = fs.readFileSync(getFixturePath('jsonFormatter.json'), 'utf-8');
-  plainResult = fs.readFileSync(getFixturePath('plainFormatter.txt'), 'utf-8');
-  stylishResult = fs.readFileSync(getFixturePath('stylishFormatter.txt'), 'utf-8');
-});
+
+// тут читаем файлы c правильными результатами
+const jsonResult = fs.readFileSync(getFixturePath('jsonFormatter.json'), 'utf-8');
+const plainResult = fs.readFileSync(getFixturePath('plainFormatter.txt'), 'utf-8');
+const stylishResult = fs.readFileSync(getFixturePath('stylishFormatter.txt'), 'utf-8');
 
 const extensions = ['ini', 'json', 'yaml'];
 const payload = extensions.map((ext) => {

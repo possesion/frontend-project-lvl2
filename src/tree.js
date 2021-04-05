@@ -4,7 +4,8 @@ const buildAST = (obj1, obj2) => {
   const firstObjKeys = Object.keys(obj1);
   const secondObjKeys = Object.keys(obj2);
 
-  const keys = _.union(firstObjKeys, secondObjKeys).sort();
+  const unionKeys = _.union(firstObjKeys, secondObjKeys);
+  const keys = _.sortBy(unionKeys);
   const ast = keys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
