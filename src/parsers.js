@@ -24,6 +24,9 @@ const parse = (data, ext) => {
     case 'yaml': {
       return yaml.safeLoad(data);
     }
+    case 'yml': {
+      return yaml.safeLoad(data);
+    }
     case 'json': {
       return JSON.parse(data);
     }
