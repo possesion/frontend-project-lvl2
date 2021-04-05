@@ -3,9 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
 // добавляем совместимость чтения пути файла
-const __filepath = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filepath);
-const getFixturePath = (filePath) => path.join(__dirname, '..', '__fixtures__', filePath);
+const filepath = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filepath);
+const getFixturePath = (filePath) => path.join(dirname, '..', '__fixtures__', filePath);
 
 // тут читаем файлы c правильными результатами
 const jsonResult = fs.readFileSync(getFixturePath('jsonFormatter.json'), 'utf-8');
