@@ -9,7 +9,7 @@ const getSubstr = (data, depth) => {
     return data;
   }
   const lines = Object.entries(data).map(([key, value]) => {
-    const nestedValue = getSubstr(value, depth);
+    const nestedValue = getSubstr(value, depth + 2);
     return `  ${getIndent(depth + 2)}${key}: ${nestedValue}`;
   });
   return getDepth(lines, getIndent(depth + 1));

@@ -1,6 +1,10 @@
 import _ from 'lodash';
 
 const getSubstr = (value) => {
+  // console.log('4то приходит ', _.isNull(value), value);
+  if (_.isNull(value)) {
+    return null;
+  }
   if (_.isPlainObject(value)) {
     return '[complex value]';
   }

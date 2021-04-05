@@ -8,11 +8,11 @@ const buildAST = (obj1, obj2) => {
   const ast = keys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
-    if (!_.hasIn(obj1, key)) {
-      return { key, type: 'added', value: value2 };
-    }
     if (!_.hasIn(obj2, key)) {
       return { key, type: 'deleted', value: value1 };
+    }
+    if (!_.hasIn(obj1, key)) {
+      return { key, type: 'added', value: value2 };
     }
     if (value1 === value2) {
       return { key, type: 'unchanged', value: value1 };
@@ -27,6 +27,8 @@ const buildAST = (obj1, obj2) => {
       value2,
     };
   });
+  // console.log('show AST ', ast);
+
   return ast;
 };
 
